@@ -99,10 +99,10 @@ public class NearPlacesFragment extends ListFragment {
 					+ "&categoryId=4bf58dd8d48988d16d941735";
 			// \n is for new line
 
-			Toast.makeText(
-					getActivity(),
-					"Your Location is - \nLat: " + latitude + "\nLong: "
-							+ longitude, Toast.LENGTH_LONG).show();
+//			Toast.makeText(
+//					getActivity(),
+//					"Your Location is - \nLat: " + latitude + "\nLong: "
+//							+ longitude, Toast.LENGTH_LONG).show();
 		} else {
 			// can't get location
 			// GPS or Network is not enabled
@@ -114,7 +114,7 @@ public class NearPlacesFragment extends ListFragment {
 				container, false);
 		mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
 				.getMap();
-		mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+		mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 		new fourquare().execute();
 		return rootView;
 	}
@@ -128,7 +128,7 @@ public class NearPlacesFragment extends ListFragment {
 			super.onPreExecute();
 			// Showing progress dialog
 			pDialog = new ProgressDialog(getActivity());
-			pDialog.setMessage("Ве молиме почекајте...");
+			pDialog.setMessage("Pleace wait...");
 			pDialog.setCancelable(true);
 			pDialog.show();
 
@@ -239,6 +239,7 @@ public class NearPlacesFragment extends ListFragment {
 					double aa1 = Double.parseDouble(a1);
 					double aa2 = Double.parseDouble(a2);
 					mMap.addMarker(new MarkerOptions().title("I am here")
+							.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
 							.position(new LatLng(aa1, aa2)));
 
 					lokacija1 = new LatLng(aa1, aa2);

@@ -23,8 +23,10 @@ import android.widget.ListView;
 
 
 
+
 import com.timska.FacebokActivity;
 import com.timska.R;
+import com.timska.TripsActivity;
 
 public class MainActivity extends Activity {
 	private DrawerLayout mDrawerLayout;
@@ -73,11 +75,11 @@ public class MainActivity extends Activity {
 		// Photos
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
 		// Communities, Will add a counter here
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1), true, "22"));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1), true, "4"));
 		// Pages
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 		// What's hot, We  will add a counter here
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1), true, "50+"));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
 		
 
 		// Recycle the typed array
@@ -183,7 +185,9 @@ public class MainActivity extends Activity {
 			fragment = new FoursquareFragment();
 			break;
 		case 3:
-			fragment = new ListOfTripsFragment();
+			//fragment = new ListOfTripsFragment();
+			Intent j = new Intent(MainActivity.this,TripsActivity.class);
+ 			startActivity(j);
 			break;
 		case 4:
 			fragment = new NearPlacesFragment();
