@@ -1854,7 +1854,6 @@ containing a value of this type.
         public static final int btn_get_profile=0x7f060062;
         public static final int btn_show_access_tokens=0x7f060063;
         public static final int button=0x7f06001d;
-        public static final int button1=0x7f060085;
         public static final int buyButton=0x7f06002f;
         public static final int buy_now=0x7f060034;
         public static final int buy_with_google=0x7f060033;
@@ -1899,6 +1898,7 @@ containing a value of this type.
         public static final int expand_activities_button=0x7f060046;
         public static final int expanded_menu=0x7f06004c;
         public static final int fb_login=0x7f060060;
+        public static final int fblogin=0x7f060084;
         public static final int formLayout=0x7f06005c;
         public static final int frame_container=0x7f060065;
         public static final int grayscale=0x7f060038;
@@ -1956,7 +1956,7 @@ containing a value of this type.
         public static final int submit_area=0x7f060059;
         public static final int tabMode=0x7f060002;
         public static final int terrain=0x7f060028;
-        public static final int textView1=0x7f060084;
+        public static final int textView2=0x7f060085;
         public static final int title=0x7f06004b;
         public static final int todoText=0x7f060067;
         public static final int top=0x7f060021;

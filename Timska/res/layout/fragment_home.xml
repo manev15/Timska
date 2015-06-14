@@ -3,24 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+       <Button
+           android:id="@+id/fblogin"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentTop="true"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="17dp"
+           android:text="Login with Facebook" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="61dp"
-        android:layout_toLeftOf="@+id/textView1"
-        android:text="Button" />
+       <TextView
+           android:id="@+id/textView2"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/fblogin"
+           android:layout_centerHorizontal="true"
+           android:text="aa"
+           android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

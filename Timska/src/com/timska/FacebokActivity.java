@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import timska.HomeFragment;
 import timska.MainActivity;
+import timska.Singleton;
 
 import com.facebook.android.AsyncFacebookRunner;
 import com.facebook.android.DialogError;
@@ -16,6 +17,7 @@ import com.facebook.android.Facebook;
 import com.facebook.android.FacebookError;
 import com.facebook.android.AsyncFacebookRunner.RequestListener;
 import com.facebook.android.Facebook.DialogListener;
+
 
 
 
@@ -216,7 +218,9 @@ public class FacebokActivity extends Activity {
 						Log.d("aa",name);
 						Intent intent = new Intent(FacebokActivity.this, MainActivity.class);
 						intent.putExtra("name", name);
-					    startActivity(intent);
+						Singleton.getInstance().br++;
+						Singleton.getInstance().ime=name;
+						startActivity(intent);
 						// getting email of the user
 						final String email = profile.getString("email");
 						Toast.makeText(getApplicationContext(), "Name: " + name + "\nEmail: " + email, Toast.LENGTH_LONG).show();

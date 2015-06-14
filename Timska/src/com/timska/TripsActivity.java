@@ -1,6 +1,7 @@
 package com.timska;
 
 import timska.MainActivity;
+import timska.Singleton;
 import android.app.ActionBar;
 import android.app.ListActivity;
 import android.content.Intent;
@@ -34,7 +35,7 @@ public class TripsActivity extends ListActivity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		// Create DAO object
 		dao = new TodoDAO(this);
-		
+		Singleton.getInstance().br++;
 		// Set the list adapter and get TODOs list via DAO
 		setListAdapter(new ListAdapter(this, dao.getTodos()));
 		

@@ -1,5 +1,6 @@
 package com.timska;
 import timska.MainActivity;
+import timska.Singleton;
 
 import com.timska.dao.TodoDAO;
 
@@ -59,6 +60,7 @@ public class AddTodoActivity extends Activity implements OnClickListener {
 			// Create an intent
 			Intent intent = new Intent(this, MainActivity.class);
 			// Start activity
+			Singleton.getInstance().br++;
 			startActivity(intent);
 			// Finish this activity
 			this.finish();
