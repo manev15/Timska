@@ -7,9 +7,11 @@ import com.timska.dao.TodoDAO;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,6 +24,7 @@ public class AddTodoActivity extends Activity implements OnClickListener {
 	
 	// DAO
 	private TodoDAO dao;
+	private DatePicker data;
 	
 	
 	@Override
@@ -38,7 +41,7 @@ public class AddTodoActivity extends Activity implements OnClickListener {
 		
 		addNewButton.setOnClickListener(this);
 		backButton.setOnClickListener(this);
-		
+		data = (DatePicker)findViewById(R.id.datePicker1);
 	}
 
 	@Override
@@ -46,9 +49,36 @@ public class AddTodoActivity extends Activity implements OnClickListener {
 		// If add button was clicked
 		if (addNewButton.isPressed()) {
 			// Get entered text
-			String todoTextValue = todoText.getText().toString();
-			todoText.setText("");
 			
+			
+			int den = data.getDayOfMonth();
+			int mesec = data.getMonth() + 1;
+			 int godina = data.getYear();
+			
+			 String day=den+"";
+			 String mounth=mesec+"";
+			 String year=godina+"";
+			 String golemina=day.length()+"";
+			 Log.d("goleminaaaa", golemina);
+			 if(day.length()==1)
+			 {
+				 day="0"+day;
+				 
+			 }
+			 if(mounth.length()==1)
+			 {
+				 mounth="0"+mounth;
+				 
+			 }
+			 
+			 Log.e("den", day);
+			 Log.e("mesec", mounth);
+			 Log.e("godina", year);
+			 String tripdate=day+"-"+mounth+"-"+year;
+			 Log.e("cela", tripdate);
+			 
+			 String todoTextValue = tripdate+" "+todoText.getText().toString();
+				todoText.setText("");
 			// Add text to the database
 			dao.createTodo(todoTextValue);
 			

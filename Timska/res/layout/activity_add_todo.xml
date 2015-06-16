@@ -2,29 +2,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <LinearLayout
-        android:id="@+id/formLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" >
-
-        <EditText
-            android:id="@+id/newTodoText"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:ems="10" >
-
-            <requestFocus />
-        </EditText>
-
-        <Button
-            android:id="@+id/addNewTodoButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/addtrip" />
-    </LinearLayout>
-
     <Button
         android:id="@+id/menuGoBackButton"
         android:layout_width="wrap_content"
@@ -33,7 +10,37 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="15dp"
         android:text="Back Home" />
-    
-    
+
+    <EditText
+        android:id="@+id/newTodoText"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menuGoBackButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:ems="10" 
+          android:hint="City/Country"/>
+
+    <LinearLayout
+        android:id="@+id/formLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newTodoText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp" >
+
+        <Button
+            android:id="@+id/addNewTodoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/addtrip" />
+    </LinearLayout>
+
+    <DatePicker
+        android:id="@+id/datePicker1"
+        android:layout_width="wrap_content"
+        android:layout_height="400px"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" />
 
 </RelativeLayout>

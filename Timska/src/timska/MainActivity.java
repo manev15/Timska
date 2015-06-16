@@ -24,7 +24,9 @@ import android.widget.ListView;
 
 
 
+
 import com.timska.FacebokActivity;
+import com.timska.PhotoActivity;
 import com.timska.R;
 import com.timska.TripsActivity;
 
@@ -193,7 +195,9 @@ public class MainActivity extends Activity {
 			fragment = new NearPlacesFragment();
 			break;
 		case 5:
-			fragment = new WhatsHotFragment();
+			Intent o = new Intent(MainActivity.this,PhotoActivity.class);
+ 			startActivity(o);
+			//fragment = new TakePhoto();
 			break;
 
 		default:
