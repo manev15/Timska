@@ -142,7 +142,7 @@ public class FacebokActivity extends Activity {
 
 			if (!facebook.isSessionValid()) {
 				facebook.authorize(this,
-						new String[] { "email", "publish_actions" },
+						new String[] { "publish_actions","email"},
 						new DialogListener() {
 
 							@Override
@@ -221,9 +221,13 @@ public class FacebokActivity extends Activity {
 						Singleton.getInstance().br++;
 						Singleton.getInstance().ime=name;
 						startActivity(intent);
+					
 						// getting email of the user
 						final String email = profile.getString("email");
+						
+						Log.e("ACEEEEE", email);
 						Toast.makeText(getApplicationContext(), "Name: " + name + "\nEmail: " + email, Toast.LENGTH_LONG).show();
+						
 						runOnUiThread(new Runnable() {
 
 							@Override

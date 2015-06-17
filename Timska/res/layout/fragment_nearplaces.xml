@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    
-    <fragment
-        android:id="@+id/map"
-        android:layout_width="match_parent"
-        android:layout_height="500px"
-        android:layout_alignParentTop="true"
-        class="com.google.android.gms.maps.MapFragment" />
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res/com.timska">
 
     <ListView
         android:id="@android:id/list"
@@ -19,5 +12,34 @@
         android:layout_below="@+id/map" >
 
     </ListView>
+
+    <fragment
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="400px"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="38dp"
+        class="com.google.android.gms.maps.MapFragment" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="192dp"
+                android:layout_height="wrap_content"
+                android:text="Choose category: "
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
 
 </RelativeLayout>

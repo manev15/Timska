@@ -14,6 +14,7 @@
     <string name="btnIntendV">Take Video</string>
     <string name="cannot">Cannot</string>
     <string name="album_name">WorldTrip</string>
+     <string name="spinner_title">Select Category</string>
 
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
@@ -44,5 +45,6 @@
     <string name="title_activity_add_todo">AddTodoActivity</string>
     <string name="title_activity_photo">PhotoActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_my_trip">MyTrip</string>
 
 </resources>

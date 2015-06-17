@@ -29,6 +29,7 @@ import com.timska.dao.TodoDAO;
 import com.timska.data.Todo;
 
 
+
 /**
  * Main activity which displays a list of TODOs.
  * 
@@ -41,7 +42,7 @@ public class TripsActivity extends ListActivity {
 	private static final int BACK_MENU_ITEM = SAVE_MENU_ITEM + 1;
 	// DAO
 	private TodoDAO dao;
-	private String lokacija;
+	private String lokacija,lokacijaZaGEO;
 	private Geocoder geocoder;
 	final Context context = this;
 	
@@ -58,8 +59,8 @@ public class TripsActivity extends ListActivity {
 		  SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 		  String folderName = formatter.format(today);
 		//  Log.e("denesna data",folderName);
-		  
-//		  geocoder = new Geocoder(this); 
+			 geocoder = new Geocoder(this); 
+
 		  
 	int a=getListAdapter().getCount();
 	boolean bool=false;
@@ -82,6 +83,7 @@ public class TripsActivity extends ListActivity {
 			Log.e("god",god[2]);
 			
 		 lokacija = niza[1]+" "+niza[2];
+		  lokacijaZaGEO=niza[1]+" "+niza[2];
 			Log.e("lokacija",lokacija);
 			
 		  
@@ -132,18 +134,32 @@ public class TripsActivity extends ListActivity {
 	 
 				// set dialog message
 				alertDialogBuilder
-					.setMessage("tuka patuvanjeto\n \n Show my trip")
+					.setMessage(lokacija+"\n \n Show my trip")
 					.setCancelable(false)
 					.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+						private double lat;
+			       		private double lng;
 						public void onClick(DialogInterface dialog,int id) {
-							
-							
-							
-							
-							
-							
-							
-							
+					   		try {
+
+						    	List<Address> addresses= geocoder.getFromLocationName(lokacijaZaGEO, 1);
+
+						    	if (addresses != null && !addresses.isEmpty()) {
+
+						    	 Address address = addresses.get(0);
+				                 lat=address.getLatitude();
+						    	 lng=address.getLongitude();
+						    	
+						    	}
+						    	
+						    	} 
+						    	catch (IOException e)    {
+						    	  
+						    	}
+								  Intent intent = new Intent(TripsActivity.this, MyTrip.class);
+								   intent.putExtra("lat",lat);
+								   intent.putExtra("lng", lng);
+								    startActivity(intent);
 							
 						}
 					  })
@@ -238,8 +254,7 @@ public class TripsActivity extends ListActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		
 		menu.add(0, OK_MENU_ITEM, 0, "Add Trip");
-		menu.add(0, SAVE_MENU_ITEM, 0, "Car");
-		menu.add(0, BACK_MENU_ITEM, 0, "Micar");
+	
 		return super.onCreateOptionsMenu(menu);
 	
 	}

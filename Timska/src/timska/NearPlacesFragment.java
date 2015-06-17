@@ -16,22 +16,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.app.Fragment;
 import android.app.ListFragment;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
-import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -44,7 +40,7 @@ import com.timska.FoursquareVenue;
 import com.timska.GPSTracker;
 import com.timska.R;
 
-public class NearPlacesFragment extends ListFragment {
+public class NearPlacesFragment extends ListFragment implements OnItemSelectedListener{
 
 	// GPSTracker class
 	GPSTracker gps;
@@ -67,6 +63,8 @@ public class NearPlacesFragment extends ListFragment {
 	private static String latitude = "";
 	ArrayAdapter<String> myAdapter;
 	HashMap<String, String> lokacii;
+	private Spinner sp;
+	private String kat="",povik="";
 
 	// private double latitute=41.3182956;
 
@@ -82,8 +80,16 @@ public class NearPlacesFragment extends ListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
+		
+		
 		gps = new GPSTracker(getActivity());
-
+		String ku=Singleton.getInstance().category;
+		if(ku.length()!=0)
+		{
+		kat=ku;	
+			
+		}
+		
 		// check if GPS enabled
 		if (gps.canGetLocation()) {
 
@@ -97,6 +103,7 @@ public class NearPlacesFragment extends ListFragment {
 
 			longtitude = a1 + "," + a2 + "&radius=5000"
 					+ "&categoryId=4bf58dd8d48988d16d941735";
+			
 			// \n is for new line
 
 //			Toast.makeText(
@@ -112,6 +119,28 @@ public class NearPlacesFragment extends ListFragment {
 
 		View rootView = inflater.inflate(R.layout.fragment_nearplaces,
 				container, false);
+		sp=(Spinner)rootView.findViewById(R.id.spinner1);
+
+		 sp.setOnItemSelectedListener(this);
+		 
+		 List<String> categories = new ArrayList<String>();
+	        categories.add("Caffes");
+	        categories.add("Restaurants");
+	        categories.add("Museums");
+	        categories.add("Theatres");
+	        categories.add("Casino");
+	        categories.add("manev");
+	        
+	        // Creating adapter for spinner
+			ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, categories);
+			
+			// Drop down layout style - list view with radio button
+			dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			
+			// attaching data adapter to spinner
+			sp.setAdapter(dataAdapter);
+		 
+		
 		mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
 				.getMap();
 		mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
@@ -137,17 +166,52 @@ public class NearPlacesFragment extends ListFragment {
 		@Override
 		protected String doInBackground(View... urls) {
 			// make Call to the url
-			temp = makeCall("https://api.foursquare.com/v2/venues/search?client_id="
-					+ CLIENT_ID
-					+ "&client_secret="
-					+ CLIENT_SECRET
-					+ "&v=20130815&ll=" + longtitude);
+			String ku=Singleton.getInstance().category;
+			if(ku.length()!=0)
+			{	kat=ku;
+				longtitude = a1 + "," + a2 + "&radius=5000"
+						+ "&categoryId="+kat;
+				povik ="https://api.foursquare.com/v2/venues/search?client_id="
+						+ CLIENT_ID
+						+ "&client_secret="
+						+ CLIENT_SECRET
+						+ "&v=20130815&ll=" + longtitude;
+	    	}
+			else
+			{
+				
+				povik ="https://api.foursquare.com/v2/venues/search?client_id="
+						+ CLIENT_ID
+						+ "&client_secret="
+						+ CLIENT_SECRET
+						+ "&v=20130815&ll=" + longtitude;
+				
+				
+			}
+			 
+			
+			
+			
+			temp = makeCall(povik);
 
+			
+			
 			ServiceHandler sh = new ServiceHandler();
 
 			// Making a request to url and getting response
+		
+			if(ku.length()!=0)
+			{
+			kat=ku;	
+			
+			Log.e("ROZGA", kat);
+				urlDel2="&categoryId="+kat+"&oauth_token=0WJ1LKKR4NXVAJRT3IXGQCCPMTBF5LHCIE4LADGPINZZ4QCF&v=20150608";
+				url = urlDel1 + a1 + "," + a2 + urlDel2;
+			}
+			else
+			{
 			url = urlDel1 + a1 + "," + a2 + urlDel2;
-
+			}
 			String jsonStr = sh.makeServiceCall(url, ServiceHandler.GET, false);
 
 			Log.d("Response: ", "> " + jsonStr);
@@ -238,6 +302,7 @@ public class NearPlacesFragment extends ListFragment {
 							+ venuesList.get(i).getCity());
 					double aa1 = Double.parseDouble(a1);
 					double aa2 = Double.parseDouble(a2);
+					mMap.clear();
 					mMap.addMarker(new MarkerOptions().title("I am here")
 							.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
 							.position(new LatLng(aa1, aa2)));
@@ -248,6 +313,7 @@ public class NearPlacesFragment extends ListFragment {
 					String niza=lokacii.get(name);
 					
 					Set<String> keys = lokacii.keySet();  //get all keys
+					
 					for(String p: keys)
 					{
 					 
@@ -386,4 +452,39 @@ public class NearPlacesFragment extends ListFragment {
 		return temp;
 
 	}
+
+	@Override
+	public void onItemSelected(AdapterView<?> parent, View view, int position,
+			long id) {
+		String item = parent.getItemAtPosition(position).toString();
+		
+		if(item.equals("Casino"))
+		{
+		String kategorija="4bf58dd8d48988d17c941735";
+		Singleton.getInstance().category=kategorija;	
+		}
+		if(item.equals("Restaurants"))
+		{
+		String kategorija="4d4b7105d754a06374d81259";
+		Singleton.getInstance().category=kategorija;	
+		}
+		if(item.equals("Museums"))
+		{
+		String kategorija="4bf58dd8d48988d181941735";
+		Singleton.getInstance().category=kategorija;	
+		}
+		
+		
+		new fourquare().execute();
+        // Showing selected spinner item
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+		
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> parent) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

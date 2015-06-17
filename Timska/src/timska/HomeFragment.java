@@ -29,13 +29,8 @@ public class HomeFragment extends Fragment {
  
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
          user=(TextView)rootView.findViewById(R.id.textView2);
-
          fblogin=(Button)rootView.findViewById(R.id.fblogin);
       
-  
-         
-
-    	
          fblogin.setOnClickListener(new View.OnClickListener() {
         			
            			@Override
@@ -61,7 +56,7 @@ public class HomeFragment extends Fragment {
 	
 	    if(io!=0)
 	    {
-	    	String imee=Singleton.getInstance().ime;
+	     String imee=Singleton.getInstance().ime;
 //	    Intent i = getActivity().getIntent();
 //	    Item=i.getExtras().getString("name");
  	    user.setText("Logged as: "+imee);
@@ -69,8 +64,7 @@ public class HomeFragment extends Fragment {
 	    }
 	    else
 	    {
-	     user.setText("Ne si logiran gubre");
-
+	      user.setText("You are not logged in");
 	    }    
 	      
 	      
