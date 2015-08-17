@@ -20,7 +20,7 @@
     <string-array name="nav_drawer_items">
         <item>Home</item>
         <item>Login with facebook</item>
-        <item>Foursquare</item>
+        <item>Popular places</item>
         <item>List of trips</item>
         <item>Near places</item>
         <item>Take a photo</item>

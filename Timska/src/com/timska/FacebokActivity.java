@@ -61,10 +61,26 @@ public class FacebokActivity extends Activity {
 			btnShowAccessTokens = (Button) findViewById(R.id.btn_show_access_tokens);
 			mAsyncRunner = new AsyncFacebookRunner(facebook);
 
+			int a = Singleton.getInstance().br;
+			if(a!=0)
+			{
+				
+				// Making get profile button visible
+				btnFbGetProfile.setVisibility(View.VISIBLE);
+
+				// Making post to wall visible
+				btnPostToWall.setVisibility(View.VISIBLE);
+
+				// Making show access tokens button visible
+				btnShowAccessTokens.setVisibility(View.VISIBLE);
+			}
+			
+			loginToFacebook();
+			
 			/**
 			 * Login button Click event
 			 * */
-			btnFbLogin.setOnClickListener(new View.OnClickListener() {
+/*			btnFbLogin.setOnClickListener(new View.OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
@@ -72,7 +88,7 @@ public class FacebokActivity extends Activity {
 					loginToFacebook();
 				}
 			});
-
+*/
 			/**
 			 * Getting facebook Profile info
 			 * */
