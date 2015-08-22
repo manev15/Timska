@@ -36,6 +36,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
 import com.timska.FoursquareVenue;
 import com.timska.GPSTracker;
 import com.timska.R;
@@ -59,6 +60,7 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 	private static String url = "";
 	private static String urlDel2 = "&categoryId=4bf58dd8d48988d16d941735&oauth_token=0WJ1LKKR4NXVAJRT3IXGQCCPMTBF5LHCIE4LADGPINZZ4QCF&v=20150608";
 	private static String langutude = "", venues, response, location,name;
+
 	// JSONArray venues;
 	private static String latitude = "";
 	ArrayAdapter<String> myAdapter;
@@ -147,7 +149,15 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 		new fourquare().execute();
 		return rootView;
 	}
-
+	@Override
+	public void onDestroyView() {
+	    super.onDestroyView();
+	    MapFragment f = (MapFragment) getFragmentManager()
+	                                         .findFragmentById(R.id.map);
+	    if (f != null) 
+	        getFragmentManager().beginTransaction().remove(f).commit();
+	}
+	
 	private class fourquare extends AsyncTask<View, Void, String> {
 
 		String temp;
@@ -158,7 +168,7 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 			// Showing progress dialog
 			pDialog = new ProgressDialog(getActivity());
 			pDialog.setMessage("Pleace wait...");
-			pDialog.setCancelable(true);
+			pDialog.setCancelable(false);
 			pDialog.show();
 
 		}
@@ -205,13 +215,26 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 			kat=ku;	
 			
 			Log.e("ROZGA", kat);
-				urlDel2="&categoryId="+kat+"&oauth_token=0WJ1LKKR4NXVAJRT3IXGQCCPMTBF5LHCIE4LADGPINZZ4QCF&v=20150608";
-				url = urlDel1 + a1 + "," + a2 + urlDel2;
+			
+				longtitude = a1 + "," + a2 + "&radius=5000"
+						+ "&categoryId="+kat;
+				url ="https://api.foursquare.com/v2/venues/search?client_id="
+						+ CLIENT_ID
+						+ "&client_secret="
+						+ CLIENT_SECRET
+						+ "&v=20130815&ll=" + longtitude;
+				
+				
 			}
 			else
 			{
-			url = urlDel1 + a1 + "," + a2 + urlDel2;
-			}
+			 url ="https://api.foursquare.com/v2/venues/search?client_id="
+					+ CLIENT_ID
+					+ "&client_secret="
+					+ CLIENT_SECRET
+					+ "&v=20130815&ll=" + longtitude;
+			
+			}	
 			String jsonStr = sh.makeServiceCall(url, ServiceHandler.GET, false);
 
 			Log.d("Response: ", "> " + jsonStr);
@@ -255,7 +278,7 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 								Log.d("manol i fico mangi1", latitude);
 								double aa1 = Double.parseDouble(langutude);
 								double aa2 = Double.parseDouble(latitude);
-								String ace=name+","+" "+langutude+" "+latitude;
+								String ace=name+";"+" "+langutude+" "+latitude;
 							lokacii.put(name,ace);
 							//lokacii.put(name,name);
 								
@@ -276,8 +299,9 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 	
 
 		protected void onPostExecute(String result) {
-			super.onPostExecute(result);
-
+			super.onPostExecute(result);	
+			int nex=0;
+			String fico="";
 			// Dismiss the progress dialog
 			if (pDialog.isShowing())
 				pDialog.dismiss();
@@ -297,9 +321,9 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 					// make a list of the venus that are loaded in the list.
 					// show the name, the category and the city
 					
-					listTitle.add(i, venuesList.get(i).getName() + ", "
-							+ venuesList.get(i).getCategory() + ""
-							+ venuesList.get(i).getCity());
+//					listTitle.add(i, venuesList.get(i).getName() + ", "
+//							+ venuesList.get(i).getCategory() + ""
+//							+ venuesList.get(i).getCity());
 					double aa1 = Double.parseDouble(a1);
 					double aa2 = Double.parseDouble(a2);
 					mMap.clear();
@@ -313,13 +337,14 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 					String niza=lokacii.get(name);
 					
 					Set<String> keys = lokacii.keySet();  //get all keys
-					
+				
+				
 					for(String p: keys)
-					{
-					 
+					{ 
+					
 						Log.e("AAAAAAAAAAAAAA", lokacii.get(p));
-						String op[]=lokacii.get(p).split(",");
-						String fico = op[0];
+						String op[]=lokacii.get(p).split(";");
+						fico = op[0];
 						String fico1=op[1];
 						String kco[]=fico1.split(" ");
 						Log.e("FICO", fico);
@@ -330,9 +355,14 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 						Log.e("aa1", String.valueOf(aaa1));
 						mMap.addMarker(new MarkerOptions().title(fico)
 								.position(new LatLng(aaa1, aaa2)));
+					if(i==0)
+						{
+						 listTitle.add(nex, fico);
+						 nex++;
+						}						
 					}
 					
-			
+					
 //					ListAdapter adapter = new SimpleAdapter(getActivity(),lokacii,R.layout.fragment_nearplaces,new String[]
 //					{
 //						
@@ -458,30 +488,43 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 			long id) {
 		String item = parent.getItemAtPosition(position).toString();
 		
+		
 		if(item.equals("Casino"))
-		{
+ 		{
 		String kategorija="4bf58dd8d48988d17c941735";
 		Singleton.getInstance().category=kategorija;	
+		mMap.clear();
+		new fourquare().execute();
 		}
 		if(item.equals("Restaurants"))
 		{
 		String kategorija="4d4b7105d754a06374d81259";
-		Singleton.getInstance().category=kategorija;	
+		Singleton.getInstance().category=kategorija;
+		mMap.clear();
+		new fourquare().execute();
 		}
 		if(item.equals("Museums"))
 		{
 		String kategorija="4bf58dd8d48988d181941735";
 		Singleton.getInstance().category=kategorija;	
+		mMap.clear();
+		new fourquare().execute();
+		}
+		if(item.equals("manev"))
+		{
+		String kategorija="4bf58dd8d48988d16d941735";
+		Singleton.getInstance().category=kategorija;	
+		mMap.clear();
+		new fourquare().execute();
 		}
 		
 		
-		new fourquare().execute();
+	//	new fourquare().execute();
         // Showing selected spinner item
         Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
 		
 	}
 
-	@Override
 	public void onNothingSelected(AdapterView<?> parent) {
 		// TODO Auto-generated method stub
 		

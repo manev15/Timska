@@ -9,10 +9,12 @@
    android:layout_height="wrap_content"
    android:layout_width="match_parent"
    >
-    <Button android:text="@string/btnIntend" android:id="@+id/btnIntend"
+
+    <Button
+        android:id="@+id/btnIntend"
+        android:layout_width="178dp"
         android:layout_height="wrap_content"
-        android:layout_width="0dp"
-        android:layout_weight="1" />
+        android:text="@string/btnIntend" />
 
     <Button
         android:id="@+id/btnIntendS"
@@ -21,10 +23,17 @@
         android:text="@string/btnIntendS"
         android:visibility="invisible" />
 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Share Photo" />
+
     <Button android:text="@string/btnIntendV" android:id="@+id/btnIntendV"
         android:layout_height="wrap_content"
         android:layout_width="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+          android:visibility="invisible" />
   </LinearLayout>
 
    <ImageView

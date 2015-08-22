@@ -1,11 +1,13 @@
 package com.timska;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import timska.MainActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,12 +15,14 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Bitmap.CompressFormat;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -221,6 +225,7 @@ public class PhotoActivity extends Activity {
 			dispatchTakeVideoIntent();
 		}
 	};
+	private Button kopce;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -228,10 +233,47 @@ public class PhotoActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_photo);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		mImageView = (ImageView) findViewById(R.id.imageView1);
 		mVideoView = (VideoView) findViewById(R.id.videoView1);
 		mImageBitmap = null;
 		mVideoUri = null;
+		kopce=(Button)findViewById(R.id.button1);
+		
+		
+		kopce.setOnClickListener(new View.OnClickListener() {
+
+
+			public void onClick(View v) {
+				
+				View content = findViewById(R.id.imageView1);
+                content.setDrawingCacheEnabled(true);
+
+                    Bitmap bitmap = content.getDrawingCache();
+                    File root = Environment.getExternalStorageDirectory();
+                    File cachePath = new File(root.getAbsolutePath() + "/DCIM/Camera/image.jpg");
+                    try {
+                        cachePath.createNewFile();
+                        FileOutputStream ostream = new FileOutputStream(cachePath);
+                        bitmap.compress(CompressFormat.JPEG, 100, ostream);
+                        ostream.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+
+                    Intent share = new Intent(Intent.ACTION_SEND);
+                    share.setType("image/*");
+                    share.putExtra(Intent.EXTRA_TEXT,"Here i am :)");
+                    share.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(cachePath));
+                    startActivity(Intent.createChooser(share,"Share via"));
+
+            
+			
+			
+			
+			}    
+		});
 
 		Button picBtn = (Button) findViewById(R.id.btnIntend);
 		setBtnListenerOrDisable( 
@@ -248,6 +290,7 @@ public class PhotoActivity extends Activity {
 		);
 
 		Button vidBtn = (Button) findViewById(R.id.btnIntendV);
+		vidBtn.setEnabled(false);
 		setBtnListenerOrDisable( 
 				vidBtn, 
 				mTakeVidOnClickListener,
@@ -348,6 +391,20 @@ public class PhotoActivity extends Activity {
 				getText(R.string.cannot).toString() + " " + btn.getText());
 			btn.setClickable(false);
 		}
+	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Since we have only ONE option this code is not complicated :)
+		
+		// Create an intent
+		Intent intent = new Intent(this, MainActivity.class);
+		// Start activity
+		startActivity(intent);
+		// Finish this activity
+		this.finish();
+	
+		
+		return super.onOptionsItemSelected(item);
 	}
 
 }

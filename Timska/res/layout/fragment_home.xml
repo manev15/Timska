@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/back"
+     >
 
          <Button
            android:id="@+id/fblogin"
@@ -10,7 +12,8 @@
            android:layout_alignParentTop="true"
            android:layout_centerHorizontal="true"
            android:layout_marginTop="17dp"
-           android:text="Login with Facebook" />
+           android:text="Login with Facebook"
+           android:visibility="gone" />
 
        <TextView
            android:id="@+id/textView2"
@@ -31,5 +34,23 @@
            android:text="Post to Facebook Wall" 
            	android:visibility="gone"
            />
+
+       <ImageButton
+           android:id="@+id/imageButton1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           android:layout_alignParentLeft="true"
+           android:layout_marginBottom="124dp"
+           android:src="@drawable/login" />
+
+       <ImageButton
+           android:id="@+id/imageButton2"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignTop="@+id/imageButton1"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="26dp"
+           android:src="@drawable/btn" />
 
 </RelativeLayout>

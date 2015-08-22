@@ -104,7 +104,7 @@ public class MyTrip extends ListActivity {
 Log.e("a1",a1);
 Log.e("a2",a2);
 			longtitude = a1 + "," + a2 + "&radius=5000"
-					+ "&categoryId=4bf58dd8d48988d16d941735";
+					+ "&categoryId=4bf58dd8d48988d16d941735,4bf58dd8d48988d1e5931735,4bf58dd8d48988d137941735,4d4b7105d754a06374d81259";
 			// \n is for new line
 
 //			Toast.makeText(
@@ -221,7 +221,7 @@ Log.e("a2",a2);
 								Log.d("manol i fico mangi1", latitude);
 								double aa1 = Double.parseDouble(langutude);
 								double aa2 = Double.parseDouble(latitude);
-								String ace=name+","+" "+langutude+" "+latitude;
+								String ace=name+";"+" "+langutude+" "+latitude;
 							lokacii.put(name,ace);
 							//lokacii.put(name,name);
 								
@@ -282,7 +282,7 @@ Log.e("a2",a2);
 					{
 					 
 						Log.e("AAAAAAAAAAAAAA", lokacii.get(p));
-						String op[]=lokacii.get(p).split(",");
+						String op[]=lokacii.get(p).split(";");
 						String fico = op[0];
 						String fico1=op[1];
 						String kco[]=fico1.split(" ");
