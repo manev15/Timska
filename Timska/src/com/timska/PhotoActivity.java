@@ -25,6 +25,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.VideoView;
 
@@ -207,6 +208,9 @@ public class PhotoActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			dispatchTakePictureIntent(ACTION_TAKE_PHOTO_B);
+			kopce1.setVisibility(View.VISIBLE);
+			kopce2.setVisibility(View.GONE);
+			
 		}
 	};
 
@@ -214,6 +218,7 @@ public class PhotoActivity extends Activity {
 		new Button.OnClickListener() {
 		@Override
 		public void onClick(View v) {
+			kopce1.setVisibility(0);
 			dispatchTakePictureIntent(ACTION_TAKE_PHOTO_S);
 		}
 	};
@@ -226,6 +231,8 @@ public class PhotoActivity extends Activity {
 		}
 	};
 	private Button kopce;
+	private ImageButton kopce1;
+	private ImageButton kopce2;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -239,9 +246,12 @@ public class PhotoActivity extends Activity {
 		mImageBitmap = null;
 		mVideoUri = null;
 		kopce=(Button)findViewById(R.id.button1);
+		kopce1=(ImageButton)findViewById(R.id.imageButton1);
+		kopce2=(ImageButton)findViewById(R.id.imageButton2);
 		
 		
-		kopce.setOnClickListener(new View.OnClickListener() {
+		
+		kopce1.setOnClickListener(new View.OnClickListener() {
 
 
 			public void onClick(View v) {
@@ -280,6 +290,10 @@ public class PhotoActivity extends Activity {
 				picBtn, 
 				mTakePicOnClickListener,
 				MediaStore.ACTION_IMAGE_CAPTURE
+			
+				
+				
+				
 		);
 
 		Button picSBtn = (Button) findViewById(R.id.btnIntendS);

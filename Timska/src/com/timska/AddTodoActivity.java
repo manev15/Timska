@@ -83,7 +83,7 @@ public class AddTodoActivity extends Activity implements OnClickListener {
 			dao.createTodo(todoTextValue);
 			
 			// Display success information
-			Toast.makeText(getApplicationContext(), "New TODO added!", Toast.LENGTH_LONG).show();
+			Toast.makeText(getApplicationContext(), "New Trip added!", Toast.LENGTH_LONG).show();
 			
 		} else if (backButton.isPressed()) {
 			// When back button is pressed

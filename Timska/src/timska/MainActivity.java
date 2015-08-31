@@ -186,7 +186,7 @@ public class MainActivity extends Activity {
  			startActivity(i);
 			break;
 		case 2:
-			fragment = new FoursquareFragment();
+			fragment = new PopularPlacesFragment();
 			break;
 		case 3:
 			//fragment = new ListOfTripsFragment();

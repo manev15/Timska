@@ -3,13 +3,21 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
    
+
+    
+    
     <TextView
         android:id="@+id/todoText"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="TODO TEXT GOES_HERE"
-        android:textColor="#000" >
+        android:textColor="#000"
+        android:textSize="19dp"
+         >
 
     </TextView>
+    
+    
+    
     
 </LinearLayout>

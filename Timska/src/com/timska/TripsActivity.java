@@ -30,12 +30,6 @@ import com.timska.data.Todo;
 
 
 
-/**
- * Main activity which displays a list of TODOs.
- * 
- * @author itcuties
- *
- */
 public class TripsActivity extends ListActivity {
 	private static final int OK_MENU_ITEM = Menu.FIRST;
 	private static final int SAVE_MENU_ITEM = OK_MENU_ITEM + 1;
@@ -44,7 +38,9 @@ public class TripsActivity extends ListActivity {
 	private TodoDAO dao;
 	private String lokacija,lokacijaZaGEO;
 	private Geocoder geocoder;
+	private CardArrayAdapter cardArrayAdapter;
 	final Context context = this;
+	private ListView listView;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +49,9 @@ public class TripsActivity extends ListActivity {
 		// Create DAO object
 		dao = new TodoDAO(this);
 		Singleton.getInstance().br++;
+		
+		
+		
 		// Set the list adapter and get TODOs list via DAO
 		setListAdapter(new ListAdapter(this, dao.getTodos()));
 		Date today = Calendar.getInstance().getTime();
@@ -60,8 +59,14 @@ public class TripsActivity extends ListActivity {
 		  String folderName = formatter.format(today);
 		//  Log.e("denesna data",folderName);
 			 geocoder = new Geocoder(this); 
-
-		  
+			 // listView = (ListView)findViewById(R.id.card_listView);
+		//	  cardArrayAdapter = new CardArrayAdapter(getApplicationContext(), R.layout.list_item_card);
+			  
+				
+			
+	       
+	            
+	    
 	int a=getListAdapter().getCount();
 	boolean bool=false;
 	int i =0;
@@ -72,6 +77,9 @@ public class TripsActivity extends ListActivity {
 				  Log.e("denesna data",denesna[2]);
 			Todo todo1 = (Todo)getListAdapter().getItem(i);
 			 String aa=todo1.getText();
+			 
+			 ace(aa);
+			
 			String[]niza=aa.split(" ");
 			
 			Log.e("niza",niza[0]);
@@ -179,7 +187,7 @@ public class TripsActivity extends ListActivity {
 					bool=true;
 				}
 		
-			
+	
 				
 		  if(bool)
 			{
@@ -227,6 +235,14 @@ public class TripsActivity extends ListActivity {
 			  
 		}
 		
+	   	 
+	}
+
+	private void ace(String aa) {
+		// TODO Auto-generated method stub
+	//	  Card card = new Card("a","a");
+    //      cardArrayAdapter.add(card);
+	//	listView.setAdapter(cardArrayAdapter);
 		
 	}
 

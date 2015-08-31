@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-   <LinearLayout 
-   android:orientation="horizontal"
-   android:layout_height="wrap_content"
-   android:layout_width="match_parent"
-   >
-
-    <Button
-        android:id="@+id/btnIntend"
-        android:layout_width="178dp"
-        android:layout_height="wrap_content"
-        android:text="@string/btnIntend" />
 
     <Button
         android:id="@+id/btnIntendS"
@@ -23,32 +12,64 @@
         android:text="@string/btnIntendS"
         android:visibility="invisible" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Share Photo" />
-
     <Button android:text="@string/btnIntendV" android:id="@+id/btnIntendV"
         android:layout_height="wrap_content"
         android:layout_width="0dp"
         android:layout_weight="1"
           android:visibility="invisible" />
-  </LinearLayout>
 
-   <ImageView
-       android:id="@+id/imageView1"
-       android:layout_width="306dp"
-       android:layout_height="267dp"
-       android:layout_gravity="center_horizontal"
-       android:visibility="visible" />
+  <Button
+      android:id="@+id/button1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_centerHorizontal="true"
+      android:text="Share Photo"
+       android:visibility="invisible" />
 
   <VideoView
       android:id="@+id/videoView1"
       android:layout_width="246dp"
       android:layout_height="116dp"
-      android:visibility="invisible" 
-        android:layout_gravity="center_horizontal"
+      android:layout_alignParentLeft="true"
+      android:layout_below="@+id/btnIntendS"
+      android:visibility="invisible" />
+
+  <ImageButton
+      android:id="@+id/imageButton1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_centerHorizontal="true"
+      android:background="@android:color/transparent"
+      android:src="@drawable/share" 
+      android:visibility="invisible"
       />
 
-</LinearLayout>
+  <ImageView
+      android:id="@+id/imageView1"
+      android:layout_width="306dp"
+      android:layout_height="267dp"
+      android:layout_centerHorizontal="true"
+      android:layout_centerVertical="true"
+      android:visibility="visible" />
+
+  <ImageButton
+      android:id="@+id/imageButton2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignLeft="@+id/imageButton1"
+      android:layout_below="@+id/videoView1"
+      android:layout_marginTop="37dp"
+      android:background="@android:color/transparent"
+      android:src="@drawable/photo" />
+
+  <Button
+      android:id="@+id/btnIntend"
+      android:layout_width="178dp"
+      android:layout_height="wrap_content"
+      android:layout_alignTop="@+id/videoView1"
+      android:layout_centerHorizontal="true"
+      android:text="@string/btnIntend" />
+
+</RelativeLayout>
