@@ -36,7 +36,6 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import com.timska.FoursquareVenue;
 import com.timska.GPSTracker;
 import com.timska.R;
@@ -68,13 +67,6 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 	private Spinner sp;
 	private String kat="",povik="";
 
-	// private double latitute=41.3182956;
-
-	// private double longitude=22.5565718;
-	// private double latitute;
-
-	// private double longitude;
-
 	public void PagesFragment() {
 	}
 
@@ -89,7 +81,6 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 		if(ku.length()!=0)
 		{
 		kat=ku;	
-			
 		}
 		
 		// check if GPS enabled
@@ -106,13 +97,8 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 			longtitude = a1 + "," + a2 + "&radius=5000"
 					+ "&categoryId=4bf58dd8d48988d16d941735";
 			
-			// \n is for new line
-
-//			Toast.makeText(
-//					getActivity(),
-//					"Your Location is - \nLat: " + latitude + "\nLong: "
-//							+ longitude, Toast.LENGTH_LONG).show();
-		} else {
+		} 
+		else {
 			// can't get location
 			// GPS or Network is not enabled
 			// Ask user to enable GPS/network in settings
@@ -196,18 +182,10 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 						+ CLIENT_SECRET
 						+ "&v=20130815&ll=" + longtitude;
 				
-				
 			}
-			 
-			
-			
 			
 			temp = makeCall(povik);
-
-			
-			
 			ServiceHandler sh = new ServiceHandler();
-
 			// Making a request to url and getting response
 		
 			if(ku.length()!=0)
@@ -241,7 +219,7 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 
 			// Getting JSON Array node
 			forsquereApiResults = JSonParser.parseStringToJsonArray(jsonStr);
-			// igraci = JSonParser.parseStringToJsonArray(jsonStr);
+		
 			try {
 				lokacii = new HashMap<String,String>();
 				// null
@@ -266,10 +244,7 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 							location=tempRow.getString("location");
 							Log.d("Location", location);
 							
-							
-//							for(int k = 0; k < 5; k++)
-//							{
-								JSONObject jsonLocation = new JSONObject(location);
+						JSONObject jsonLocation = new JSONObject(location);
 								
 								langutude = jsonLocation.getString("lat");
 								Log.d("manol i fico mangi", langutude);
@@ -280,15 +255,8 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 								double aa2 = Double.parseDouble(latitude);
 								String ace=name+";"+" "+langutude+" "+latitude;
 							lokacii.put(name,ace);
-							//lokacii.put(name,name);
-								
-							
-								
-							}
-					//	}        
-						
 
-
+						}
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -361,18 +329,6 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 						 nex++;
 						}						
 					}
-					
-					
-//					ListAdapter adapter = new SimpleAdapter(getActivity(),lokacii,R.layout.fragment_nearplaces,new String[]
-//					{
-//						
-//						
-//						
-//						
-//					});
-									
-					
-					
 					
 				}
 
@@ -516,6 +472,17 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 		Singleton.getInstance().category=kategorija;	
 		mMap.clear();
 		new fourquare().execute();
+		}
+		String ku=Singleton.getInstance().category;
+		if(ku.length()!=0)
+		{
+		if(item.equals("Caffes"))
+		{
+		String kategorija="4bf58dd8d48988d16d941735";
+		Singleton.getInstance().category=kategorija;	
+		mMap.clear();
+		new fourquare().execute();
+		}
 		}
 		
 		

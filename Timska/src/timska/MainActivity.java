@@ -79,11 +79,14 @@ public class MainActivity extends Activity {
 		// Photos
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
 		// Communities, Will add a counter here
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1), true, "4"));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
 		// Pages
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1), true, "4"));
 		// What's hot, We  will add a counter here
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
+		
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
 		
 
 		// Recycle the typed array
@@ -181,27 +184,31 @@ public class MainActivity extends Activity {
 			fragment = new HomeFragment();
 			break;
 		case 1:
-			fragment = new FacebookFragment();
-			Intent i = new Intent(MainActivity.this,FacebokActivity.class);
- 			startActivity(i);
+			fragment = new FindPlacesFragment();
 			break;
 		case 2:
 			fragment = new PopularPlacesFragment();
 			break;
 		case 3:
-			//fragment = new ListOfTripsFragment();
-			Intent j = new Intent(MainActivity.this,TripsActivity.class);
- 			startActivity(j);
-			break;
-		case 4:
 			fragment = new NearPlacesFragment();
 			break;
+		case 4:
+			Intent j = new Intent(MainActivity.this,TripsActivity.class);
+ 			startActivity(j);
+		break;
 		case 5:
 			Intent o = new Intent(MainActivity.this,PhotoActivity.class);
  			startActivity(o);
-			//fragment = new TakePhoto();
 			break;
-
+		case 6:
+		//	fragment = new FacebookFragment();
+			Intent i = new Intent(MainActivity.this,FacebokActivity.class);
+ 			startActivity(i);
+			break;
+		case 7:
+			fragment = new AboutFragment();
+			break;
+			
 		default:
 			break;
 		}

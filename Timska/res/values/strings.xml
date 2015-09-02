@@ -14,27 +14,31 @@
     <string name="btnIntendV">Take Video</string>
     <string name="cannot">Cannot</string>
     <string name="album_name">WorldTrip</string>
-     <string name="spinner_title">Select Category</string>
+    <string name="spinner_title">Select Category</string>
 
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
         <item>Home</item>
-        <item>Login with facebook</item>
+        <item>Find places</item>
         <item>Popular places</item>
-        <item>List of trips</item>
         <item>Near places</item>
+        <item>List of trips</item>
         <item>Take a photo</item>
+        <item>Facebook</item>
+        <item>About app</item>
     </string-array>
 
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
         <item>@drawable/ic_home</item>
-        <item>@drawable/ic_people</item>
-        <item>@drawable/ic_photos</item>
-        <item>@drawable/ic_communities</item>
-        <item>@drawable/ic_pages</item>
-        <item>@drawable/ic_whats_hot</item>
+        <item>@drawable/ic_find</item>
+        <item>@drawable/ic_popular</item>
+        <item>@drawable/ic_near</item>
+        <item>@drawable/ic_trips</item>
+        <item>@drawable/ic_photo</item>
+        <item>@drawable/ic_facebook</item>
+        <item>@drawable/ic_about</item>
     </array>
 
     <!-- Content Description -->
@@ -46,5 +50,6 @@
     <string name="title_activity_photo">PhotoActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_my_trip">MyTrip</string>
+    <string name="title_activity_map">MapActivity</string>
 
 </resources>

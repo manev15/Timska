@@ -95,7 +95,7 @@ public class FacebokActivity extends Activity {
 						@Override
 						public void onClick(View v) {
 							getProfileInformation();
-							
+							finish();
 						}
 					});
 

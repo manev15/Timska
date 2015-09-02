@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" 
-    android:background="#f0f0f0">
+     android:background="@drawable/fbback">
     
     <!-- Facebook Login Button -->
     <Button android:id="@+id/fb_login"
@@ -12,7 +12,8 @@
         		android:src="@drawable/ic_launcher"
         		android:layout_marginTop="30dip"
         		android:layout_gravity="center_horizontal"
-        		android:text="Login with Facebook"/>
+        		android:text="Login with Facebook"
+        		android:visibility="gone"/>
    
     
     <!-- Facebook Post to Wall Button -->
