@@ -114,10 +114,21 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 		 List<String> categories = new ArrayList<String>();
 	        categories.add("Caffes");
 	        categories.add("Restaurants");
+	        categories.add("Bar");
 	        categories.add("Museums");
 	        categories.add("Theatres");
 	        categories.add("Casino");
-	        categories.add("manev");
+	        categories.add("Music Venue");
+	        categories.add("Nightclub");
+	        categories.add("Racetrack");
+	        categories.add("Stadium");
+	        categories.add("Zoo");
+	        categories.add("University");
+	        categories.add("Event");
+	       
+	        
+	        
+	        
 	        
 	        // Creating adapter for spinner
 			ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, categories);
@@ -466,9 +477,9 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 		mMap.clear();
 		new fourquare().execute();
 		}
-		if(item.equals("manev"))
+		if(item.equals("Bar"))
 		{
-		String kategorija="4bf58dd8d48988d16d941735";
+		String kategorija="4bf58dd8d48988d116941735";
 		Singleton.getInstance().category=kategorija;	
 		mMap.clear();
 		new fourquare().execute();
@@ -483,6 +494,67 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 		mMap.clear();
 		new fourquare().execute();
 		}
+		
+		if(item.equals("Theatres"))
+		{
+		String kategorija="4bf58dd8d48988d137941735";
+		Singleton.getInstance().category=kategorija;	
+		mMap.clear();
+		new fourquare().execute();
+		}
+
+		if(item.equals("Music Venue"))
+		{
+		String kategorija="4bf58dd8d48988d1e5931735";
+		Singleton.getInstance().category=kategorija;	
+		mMap.clear();
+		new fourquare().execute();
+		}
+		if(item.equals("Nightclub"))
+		{
+		String kategorija="4bf58dd8d48988d11f941735";
+		Singleton.getInstance().category=kategorija;	
+		mMap.clear();
+		new fourquare().execute();
+		}
+		if(item.equals("Racetrack"))
+		{
+		String kategorija="4bf58dd8d48988d1f4931735";
+		Singleton.getInstance().category=kategorija;	
+		mMap.clear();
+		new fourquare().execute();
+		}
+		
+		if(item.equals("Stadium"))
+		{
+		String kategorija="4bf58dd8d48988d184941735";
+		Singleton.getInstance().category=kategorija;	
+		mMap.clear();
+		new fourquare().execute();
+		}
+		if(item.equals("Zoo"))
+		{
+		String kategorija="4bf58dd8d48988d17b941735";
+		Singleton.getInstance().category=kategorija;	
+		mMap.clear();
+		new fourquare().execute();
+		}
+		
+		if(item.equals("University"))
+		{
+		String kategorija="4bf58dd8d48988d1ae941735";
+		Singleton.getInstance().category=kategorija;	
+		mMap.clear();
+		new fourquare().execute();
+		}
+		if(item.equals("Event"))
+		{
+		String kategorija="4d4b7105d754a06373d81259";
+		Singleton.getInstance().category=kategorija;	
+		mMap.clear();
+		new fourquare().execute();
+		}
+		
 		}
 		
 		

@@ -10,7 +10,7 @@
         android:layout_alignBottom="@+id/editText1"
         android:layout_marginLeft="18dp"
         android:layout_toRightOf="@+id/editText1"
-        android:text="FInd" />
+        android:text="Find" />
 
  <Button
      android:id="@+id/button2"

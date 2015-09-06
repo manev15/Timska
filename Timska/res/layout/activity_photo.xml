@@ -54,16 +54,6 @@
       android:layout_centerVertical="true"
       android:visibility="visible" />
 
-  <ImageButton
-      android:id="@+id/imageButton2"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignLeft="@+id/imageButton1"
-      android:layout_below="@+id/videoView1"
-      android:layout_marginTop="37dp"
-      android:background="@android:color/transparent"
-      android:src="@drawable/photo" />
-
   <Button
       android:id="@+id/btnIntend"
       android:layout_width="178dp"
@@ -71,5 +61,14 @@
       android:layout_alignTop="@+id/videoView1"
       android:layout_centerHorizontal="true"
       android:text="@string/btnIntend" />
+
+  <ImageButton
+      android:id="@+id/imageButton2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignBottom="@+id/imageView1"
+      android:layout_centerHorizontal="true"
+      android:background="@android:color/transparent"
+      android:src="@drawable/photo" />
 
 </RelativeLayout>

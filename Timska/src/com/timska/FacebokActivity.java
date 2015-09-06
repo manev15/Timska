@@ -18,7 +18,6 @@ import com.facebook.android.FacebookError;
 import com.facebook.android.AsyncFacebookRunner.RequestListener;
 import com.facebook.android.Facebook.DialogListener;
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -30,6 +29,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 @SuppressWarnings("deprecation")
 public class FacebokActivity extends Activity {
@@ -47,6 +47,8 @@ public class FacebokActivity extends Activity {
 				Button btnPostToWall;
 				Button btnShowAccessTokens;
 				final Context cont=this;
+				private TextView txtUser;
+				private TextView ace;
 
 				@Override
 				public void onCreate(Bundle savedInstanceState) {
@@ -54,10 +56,27 @@ public class FacebokActivity extends Activity {
 					setContentView(R.layout.activity_facebok);
 
 					btnFbLogin = (Button) findViewById(R.id.fb_login);
-					btnFbGetProfile = (Button) findViewById(R.id.btn_get_profile);
-					btnPostToWall = (Button) findViewById(R.id.btn_fb_post_to_wall);
-					btnShowAccessTokens = (Button) findViewById(R.id.btn_show_access_tokens);
+					btnFbGetProfile = (Button) findViewById(R.id.button1);
+					btnPostToWall = (Button) findViewById(R.id.button2);
+					btnShowAccessTokens = (Button) findViewById(R.id.button3);
+	//				txtUser = (TextView)findViewById(R.id.txtUser);
+					ace = (TextView) findViewById(R.id.textView2);
 					mAsyncRunner = new AsyncFacebookRunner(facebook);
+
+			        Singleton.getInstance().ime = PreferenceManager.getDefaultSharedPreferences(cont).getString("name", Singleton.getInstance().ime);
+					String user=Singleton.getInstance().ime;
+					
+					 int ace1=user.length();
+			         if(ace1!=0)
+			         {   
+			        	  ace.setText("Logged as: "+user);
+			         }
+			         else
+			         {
+			        	 ace.setText("Pleace login");
+			         }
+					
+					
 
 					int a = Singleton.getInstance().br;
 					if(a!=0)
@@ -156,7 +175,7 @@ public class FacebokActivity extends Activity {
 
 					if (!facebook.isSessionValid()) {
 						facebook.authorize(this,
-								new String[] { "publish_actions","email"},
+								new String[] {"publish_actions","email"},
 								new DialogListener() {
 
 									@Override
@@ -247,7 +266,7 @@ public class FacebokActivity extends Activity {
 								final String email = profile.getString("email");
 								
 								Log.e("ACEEEEE", email);
-								Toast.makeText(getApplicationContext(), "Name: " + name + "\nEmail: " + email, Toast.LENGTH_LONG).show();
+						//		Toast.makeText(getApplicationContext(), "Name: " + name + "\nEmail: " + email, Toast.LENGTH_LONG).show();
 								
 								runOnUiThread(new Runnable() {
 

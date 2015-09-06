@@ -1,46 +1,101 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/zapozadina"
+     >
+
+    <Button
+        android:id="@+id/addNewTodoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etxt_fromdate"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="34dp"
+        android:background="@drawable/fly"
+        android:drawablePadding="-15sp"
+        android:paddingTop="32sp" />
 
     <Button
         android:id="@+id/menuGoBackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/formLayout"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="15dp"
-        android:text="Back Home" />
+        android:layout_alignBottom="@+id/addNewTodoButton"
+        android:layout_alignRight="@+id/etxt_fromdate"
+        android:layout_alignTop="@+id/addNewTodoButton"
+        android:layout_marginLeft="32dp"
+        android:layout_toRightOf="@+id/addNewTodoButton"
+        android:background="@drawable/home"
+        android:drawablePadding="-15sp"
+        android:paddingTop="32sp" />
+
+    <TextView
+        android:id="@+id/tripText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/addNewTodoButton"
+        android:layout_below="@+id/menuGoBackButton"
+        android:layout_marginRight="17dp"
+        android:text="Add Trip"
+        android:textColor="@color/orange" />
+
+    <TextView
+        android:id="@+id/homeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/menuGoBackButton"
+        android:layout_below="@+id/menuGoBackButton"
+        android:layout_marginRight="24dp"
+        android:text="Home"
+        android:textColor="@color/orange" />
+
+    <EditText
+        android:id="@+id/etxt_fromdate"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/prc"
+        android:layout_centerHorizontal="true"
+        android:alpha="0.23"
+        android:background="@android:color/white"
+        android:ems="10"
+        android:hint="Click to pick up date"
+        android:textColorHint="@color/blue"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/newTodoText"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/menuGoBackButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="21dp"
-        android:ems="10" 
-          android:hint="City/Country"/>
+        android:layout_above="@+id/etxt_fromdate"
+        android:layout_alignLeft="@+id/etxt_fromdate"
+        android:layout_marginBottom="15dp"
+        android:alpha="0.23"
+        android:background="@android:color/white"
+        android:ems="10"
+        android:hint="City Country"
+        android:singleLine="true"
+        android:textColorHint="@color/blue"
+        android:textSize="20sp" />
 
-    <LinearLayout
-        android:id="@+id/formLayout"
+    <TextView
+        android:id="@+id/prc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/newTodoText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp" >
+        android:layout_above="@+id/addNewTodoButton"
+        android:layout_centerHorizontal="true" />
 
-        <Button
-            android:id="@+id/addNewTodoButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/addtrip" />
-    </LinearLayout>
-
-    <DatePicker
-        android:id="@+id/datePicker1"
+    <TextView
+        android:id="@+id/Text"
         android:layout_width="wrap_content"
-        android:layout_height="400px"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="24dp"
+        android:paddingLeft="20px"
+        android:paddingRight="20px"
+        
+        android:text="Add information (details) about your trip"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/orange"
+        android:textSize="23sp" />
 
 </RelativeLayout>
