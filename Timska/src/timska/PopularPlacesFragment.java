@@ -35,6 +35,7 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.timska.Card;
 import com.timska.CardArrayAdapter;
@@ -663,7 +664,12 @@ public class PopularPlacesFragment extends Fragment implements OnItemSelectedLis
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public void onDestroyView() {
+	    super.onDestroyView();
+	    Singleton.getInstance().category="";
 	
+	}
 	
 	
 	}

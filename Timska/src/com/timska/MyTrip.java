@@ -19,6 +19,7 @@ import org.json.JSONObject;
 import timska.JSonParser;
 import timska.MainActivity;
 import timska.ServiceHandler;
+import timska.Singleton;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.ListActivity;
@@ -117,9 +118,10 @@ Log.e("a2",a2);
 			// Ask user to enable GPS/network in settings
 			gps.showSettingsAlert();
 		}
-	
-		
-		 mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+			String grad=Singleton.getInstance().Tripgrad;
+			setTitle(grad);
+			
+			mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
 	        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 	        getActionBar().setDisplayHomeAsUpEnabled(true);
 	    	new fourquare().execute();

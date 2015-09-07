@@ -149,6 +149,7 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 	@Override
 	public void onDestroyView() {
 	    super.onDestroyView();
+	    Singleton.getInstance().category="";
 	    MapFragment f = (MapFragment) getFragmentManager()
 	                                         .findFragmentById(R.id.map);
 	    if (f != null) 

@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment {
     				// and add the transaction to the back stack
     				transaction.replace(R.id.frame_container, newFragment);
     				transaction.addToBackStack(null);
-
+    				getActivity().setTitle("Popular places");
     				// Commit the transaction
     				transaction.commit();
  			}

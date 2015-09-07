@@ -5,7 +5,12 @@ package timska;
 public class Singleton {
 	public int br=0; 
 	public int br1=0; 
+	public double lat=0;
+	public double lng=0;
 	public String ime="";
+	public String grad="";
+	public String Tripgrad="";
+	
 	public String category="";
 	
 

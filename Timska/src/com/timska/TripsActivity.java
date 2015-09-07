@@ -97,6 +97,8 @@ public class TripsActivity extends ListActivity {
 		  
 		  if(denesna[0].equals(god[0])&& denesna[1].equals(god[1]) && denesna[2].equals(god[2]) )
 		  {   Log.e("Severinaaaaaa", "severinaaaa");
+		  	Singleton.getInstance().Tripgrad=lokacija;
+		  
 //			  AlertDialog.Builder builder = new AlertDialog.Builder(this);
 //			// Add the buttons
 //			builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {

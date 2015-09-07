@@ -77,6 +77,8 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value="timska.MainActivity" />
         </activity>
+        
+        <activity android:name="com.timska.NotificationReceiver"></activity>
     </application>
 
     <permission

@@ -45,7 +45,7 @@
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="title_activity_facebook">Facebook</string>
     <string name="title_activity_facebok">Facebok</string>
-    <string name="title_activity_trips">Trips</string>
+    <string name="title_activity_trips">My Trips</string>
     <string name="title_activity_add_todo">AddTrip</string>
     <string name="title_activity_photo">Photo</string>
     <string name="hello_world">Hello world!</string>

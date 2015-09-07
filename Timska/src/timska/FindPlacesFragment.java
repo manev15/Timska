@@ -102,7 +102,6 @@ public class FindPlacesFragment extends Fragment {
 	        
 	      
 	        
-	        
 	        find.setOnClickListener(new View.OnClickListener() {
 
 			    private double lat;
@@ -124,12 +123,14 @@ public class FindPlacesFragment extends Fragment {
 	                 lat=address.getLatitude();
 			    	 lng=address.getLongitude();
 			    	
+			    	 Singleton.getInstance().lat=lat;
+			    	 Singleton.getInstance().lng=lng;
 			    	 String a1= Double.toString(lat);
 			    	 String a2= Double.toString(lng);
 			    	 
 			    
 			    	 longtitude = a1 + "," + a2 + "&radius=5000"
-								+ "&categoryId=4bf58dd8d48988d16d941735,4bf58dd8d48988d1e5931735,4bf58dd8d48988d137941735,4d4b7105d754a06374d81259";
+								+ "&categoryId=4bf58dd8d48988d16d941735,4bf58dd8d48988d11f941735,4bf58dd8d48988d184941735,4bf58dd8d48988d1e5931735,4bf58dd8d48988d116941735,4bf58dd8d48988d1e5931735,4bf58dd8d48988d137941735,4d4b7105d754a06374d81259";
 				        
 			       	 new fourquare().execute();
 			       	 show.setVisibility(Button.VISIBLE);
@@ -147,6 +148,8 @@ public class FindPlacesFragment extends Fragment {
 
 
 				public void onClick(View v) {
+					String grad=lokacija.getText().toString();
+					Singleton.getInstance().grad=grad;
 					Intent intent = new Intent(getActivity(),MapActivity.class);
 					intent.putStringArrayListExtra("manev", lista);
 		 			startActivity(intent);

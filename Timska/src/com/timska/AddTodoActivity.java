@@ -9,6 +9,9 @@ import timska.Singleton;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -95,7 +98,8 @@ public class AddTodoActivity extends Activity implements OnClickListener {
 			// Get entered text
 			
 			 String todoTextValue = fromDateEtxt.getText().toString()+" "+city.getText().toString();
-				fromDateEtxt.setHint("Choose your date");
+			 String ace=city.getText().toString();
+			 fromDateEtxt.setHint("Choose your date");
 				city.setHint("City Country");
 
 				// String todoTextValue = tripdate+" "+todoText.getText().toString();
@@ -111,6 +115,8 @@ public class AddTodoActivity extends Activity implements OnClickListener {
 				fromDateEtxt.setInputType(InputType.TYPE_NULL);
 				fromDateEtxt.requestFocus();
 			//	Toast.makeText(getApplicationContext(), todoTextValue.toString(), Toast.LENGTH_LONG).show();
+				
+				showNotification(ace);
 			
 		} else if (backButton.isPressed()) {
 			// When back button is pressed
@@ -254,6 +260,37 @@ public class AddTodoActivity extends Activity implements OnClickListener {
 				} 
 			}
 		});
+	}
+	public void showNotification(String ace){
+
+		// define sound URI, the sound to be played when there's a notification
+
+		
+		// intent triggered, you can add other intent for other actions
+		Intent intent = new Intent(AddTodoActivity.this, TripsActivity.class);
+		PendingIntent pIntent = PendingIntent.getActivity(AddTodoActivity.this, 0, intent, 0);
+		
+		// this is it, we'll build the notification!
+		// in the addAction method, if you don't want any icon, just set the first param to 0
+		Notification mNotification = new Notification.Builder(this)
+			
+			.setContentTitle("New Trip Added!")
+			.setContentText(ace)
+			.setSmallIcon(R.drawable.hoho)
+			.setContentIntent(pIntent)
+	
+//			
+//		.addAction(0,"View", pIntent)
+//			.addAction(0, "Remind", pIntent)
+			
+			.build();
+		
+		NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+		// If you want to hide the notification after it was selected, do the code below
+		// myNotification.flags |= Notification.FLAG_AUTO_CANCEL;
+		
+		notificationManager.notify(0, mNotification);
 	}
 	
 	
