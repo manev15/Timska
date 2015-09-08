@@ -71,14 +71,18 @@
         </activity>
         <activity
             android:name=".MapActivity"
-            android:label="@string/title_activity_map" 
-    		 >
+            android:label="@string/title_activity_map" >
             <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="timska.MainActivity" />
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="timska.MainActivity" />
         </activity>
-        
-        <activity android:name="com.timska.NotificationReceiver"></activity>
+        <activity android:name=".NotificationReceiver" >
+        </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/title_activity_splash" >
+            
+        </activity>
     </application>
 
     <permission
