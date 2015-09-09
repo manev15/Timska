@@ -582,16 +582,7 @@ public class PopularPlacesFragment extends Fragment implements OnItemSelectedLis
 		
 		new fourquare().execute();
 		}
-		String ku=Singleton.getInstance().category;
-		if(ku.length()!=0)
-		{
-		if(item.equals("Caffes"))
-		{
-		String kategorija="4bf58dd8d48988d16d941735";
-		Singleton.getInstance().category=kategorija;	
-
-		new fourquare().execute();
-		}
+		
 		
 		if(item.equals("Theatres"))
 		{
@@ -650,6 +641,17 @@ public class PopularPlacesFragment extends Fragment implements OnItemSelectedLis
 		String kategorija="4d4b7105d754a06373d81259";
 		Singleton.getInstance().category=kategorija;	
 	
+		new fourquare().execute();
+		}
+		
+		String ku=Singleton.getInstance().category;
+		if(ku.length()!=0)
+		{
+		if(item.equals("Caffes"))
+		{
+		String kategorija="4bf58dd8d48988d16d941735";
+		Singleton.getInstance().category=kategorija;	
+
 		new fourquare().execute();
 		}
 		}

@@ -485,16 +485,7 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 		mMap.clear();
 		new fourquare().execute();
 		}
-		String ku=Singleton.getInstance().category;
-		if(ku.length()!=0)
-		{
-		if(item.equals("Caffes"))
-		{
-		String kategorija="4bf58dd8d48988d16d941735";
-		Singleton.getInstance().category=kategorija;	
-		mMap.clear();
-		new fourquare().execute();
-		}
+		
 		
 		if(item.equals("Theatres"))
 		{
@@ -555,7 +546,16 @@ public class NearPlacesFragment extends ListFragment implements OnItemSelectedLi
 		mMap.clear();
 		new fourquare().execute();
 		}
-		
+		String ku=Singleton.getInstance().category;
+		if(ku.length()!=0)
+		{
+		if(item.equals("Caffes"))
+		{
+		String kategorija="4bf58dd8d48988d16d941735";
+		Singleton.getInstance().category=kategorija;	
+		mMap.clear();
+		new fourquare().execute();
+		}
 		}
 		
 		

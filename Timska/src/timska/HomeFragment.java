@@ -20,7 +20,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.timska.FacebokActivity;
+import com.timska.PhotoActivity;
 import com.timska.R;
+import com.timska.TripsActivity;
 
 
 public class HomeFragment extends Fragment {
@@ -36,6 +38,10 @@ public class HomeFragment extends Fragment {
 	private ImageButton post1;
 	private ImageButton login;
 	private ImageButton find;
+	private Button upcoming;
+	private ImageButton popular;
+	private ImageButton near;
+	private ImageButton photo;
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -43,9 +49,14 @@ public class HomeFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
          user=(TextView)rootView.findViewById(R.id.textView2);
          fblogin=(Button)rootView.findViewById(R.id.fblogin);
-         post1=(ImageButton)rootView.findViewById(R.id.imageButton2);
-         login=(ImageButton)rootView.findViewById(R.id.imageButton1);
+         upcoming= (Button)rootView.findViewById(R.id.button2);
+         post1=(ImageButton)rootView.findViewById(R.id.postb);
+         login=(ImageButton)rootView.findViewById(R.id.imageButton2);
+     //    find=(ImageButton)rootView.findViewById(R.id.imageButton5);
+         popular=(ImageButton)rootView.findViewById(R.id.imageButton1);
+         near=(ImageButton)rootView.findViewById(R.id.imageButton4);
          find=(ImageButton)rootView.findViewById(R.id.imageButton5);
+         photo=(ImageButton)rootView.findViewById(R.id.imageButton6);
          String ime = Singleton.getInstance().ime;
          int ace1=ime.length();
          if(ace1==0)
@@ -63,8 +74,8 @@ public class HomeFragment extends Fragment {
      	   post1.setVisibility(View.VISIBLE);
 	    }    
          
-         
-         find.setOnClickListener(new View.OnClickListener() {
+
+         popular.setOnClickListener(new View.OnClickListener() {
  			
     			@Override
     			public void onClick(View arg0) {		
@@ -80,6 +91,50 @@ public class HomeFragment extends Fragment {
     				transaction.commit();
  			}
     		});
+     
+         
+         near.setOnClickListener(new View.OnClickListener() {
+  			
+ 			@Override
+ 			public void onClick(View arg0) {		
+ 				Fragment newFragment = new NearPlacesFragment();
+ 				FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+ 				// Replace whatever is in the fragment_container view with this fragment,
+ 				// and add the transaction to the back stack
+ 				transaction.replace(R.id.frame_container, newFragment);
+ 				transaction.addToBackStack(null);
+ 				getActivity().setTitle("Near places");
+ 				// Commit the transaction
+ 				transaction.commit();
+			}
+ 		});
+  
+         find.setOnClickListener(new View.OnClickListener() {
+   			
+  			@Override
+  			public void onClick(View arg0) {		
+  				Fragment newFragment = new FindPlacesFragment();
+  				FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+  				// Replace whatever is in the fragment_container view with this fragment,
+  				// and add the transaction to the back stack
+  				transaction.replace(R.id.frame_container, newFragment);
+  				transaction.addToBackStack(null);
+  				getActivity().setTitle("Find places");
+  				// Commit the transaction
+  				transaction.commit();
+ 			}
+  		});
+         
+         photo.setOnClickListener(new View.OnClickListener() {
+    			
+   			@Override
+   			public void onClick(View arg0) {		
+   				Intent i = new Intent(getActivity(),PhotoActivity.class);
+				startActivity(i);
+  			}
+   		});
          
          login.setOnClickListener(new View.OnClickListener() {
  			
@@ -106,6 +161,19 @@ public class HomeFragment extends Fragment {
  			}
     		});
         
+         upcoming.setOnClickListener(new View.OnClickListener() {
+  			
+ 			@Override
+ 			public void onClick(View arg0) {		
+ 				// create class object
+ 				
+ 				Intent i = new Intent(getActivity(),TripsActivity.class);
+ 				startActivity(i);
+ 				
+ 			
+			}
+ 		});
+         
 
        
         return rootView;
